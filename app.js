@@ -106,7 +106,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
             return;
         }
         var cognitoUser = result.user;
-        message.textContent = cognitoUser.getUsername() + 'Please verify your account via the confirmation email, and then proceed to log in.';
+        message.textContent = cognitoUser.getUsername() + ' Please verify your account via the confirmation email, and then proceed to log in.';
     });
     document.getElementById('signupUsername').addEventListener('input', function () {
         message.textContent = '';
