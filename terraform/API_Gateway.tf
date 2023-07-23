@@ -123,6 +123,10 @@ resource "aws_api_gateway_integration_response" "example" {
   http_method = aws_api_gateway_method.example.http_method
   status_code = "200"
 
+  depends_on = [
+    aws_api_gateway_integration.example
+  ]
+
   response_templates = {
     "application/json" = "Empty"
   }
