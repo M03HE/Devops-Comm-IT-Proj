@@ -128,8 +128,6 @@ resource "aws_api_gateway_integration_response" "get" {
   }
 }
 
-
-
 resource "aws_lambda_permission" "get" {
   depends_on     = [aws_lambda_function.my_lambda_function]
   statement_id   = "AllowExecutionFromAPIGateway"
