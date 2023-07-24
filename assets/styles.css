@@ -133,6 +133,7 @@ footer {
   }
   
   #signUpButton {
+    margin-block-start: 1vh;
     background-color: #f44336;
     color: white;
     padding: 14px 20px;
