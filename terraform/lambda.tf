@@ -53,6 +53,13 @@ resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
   policy_arn = aws_iam_policy.lambda_policy.arn
 }
 
+resource "aws_s3_object" "object" {
+  bucket = "commit-project-ilan-moshe"
+  key    = "lambda_function.zip"
+  source = "lambda_function.zip"
+  depends_on = [aws_s3_bucket.commit_project]
+}
+
 resource "aws_lambda_function" "my_lambda_function" {
   function_name    = "token-dynamodb-parameter"
   role             = aws_iam_role.lambda_role.arn
@@ -62,13 +69,14 @@ resource "aws_lambda_function" "my_lambda_function" {
   memory_size      = 128
   # Uncomment the following two lines and provide the appropriate values
   # s3_bucket        = "moshedabush-devops"
-  s3_bucket        = "commit-project-llan-moshe"
+  s3_bucket        = "commit-project-ilan-moshe"
   s3_key           = "lambda_function.zip"
 
   layers = [
     "arn:aws:lambda:eu-central-1:164980749225:layer:jwt:4"
     # "arn:aws:lambda:eu-west-1:169244118978:layer:jwt:3"
   ]
+  depends_on = [aws_s3_object.object]
 }
 
 # Data resource to zip a folder
