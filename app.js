@@ -1,11 +1,11 @@
 AWS.config.region = 'eu-west-2';
 AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'eu-west-2:538076a4-364a-4dee-994b-ec6206fec74a',
+    IdentityPoolId: 'eu-west-2:b810f0b1-4ef4-47fb-9567-471284745c17',
 });
 
 const poolData = {
-    UserPoolId: 'eu-west-2_8oRAQGNVL',
-    ClientId: '34minq1m0ecvrsmibm3suobgt8'
+    UserPoolId: 'eu-west-2_Nuk6tR8Bg',
+    ClientId: '69fbhtnedla6b265cn0cta0q7m'
 };
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
@@ -43,7 +43,7 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
             const idToken = result.getIdToken().getJwtToken();
             message.textContent = '';  // Clear the error message on successful login
 
-            fetch('https://v5uwmz3xpd.execute-api.eu-west-2.amazonaws.com/Dev/', {
+            fetch('https://o4bu13cwc6.execute-api.eu-west-2.amazonaws.com/Dev/', {
                 method: 'GET',
                 headers: {
                     'Authorization': 'Bearer ' + idToken
