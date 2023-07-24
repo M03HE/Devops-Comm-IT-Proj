@@ -9,6 +9,7 @@ const poolData = {
 };
 
 const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
+const message = document.getElementById('message');
 
 document.getElementById('loginForm').addEventListener('submit', function (event) {
     event.preventDefault();
@@ -21,7 +22,6 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     signUp.classList.add('hidden');
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
-    const message = document.getElementById('message');
 
     const authenticationData = {
         Username: username,
@@ -120,6 +120,7 @@ document.getElementById('signupForm').addEventListener('submit', function (event
 });
 
 document.getElementById('signUpButton').addEventListener('click', function () {
+    message.textContent = '';
     document.getElementById('signUpButton').style.display = 'none';
     document.getElementById('signupForm').style.display = 'block';
     document.getElementById('loginForm').style.display = 'none';
@@ -127,6 +128,7 @@ document.getElementById('signUpButton').addEventListener('click', function () {
 });
 
 document.getElementById('loginButton').addEventListener('click', function () {
+    message.textContent = '';
     document.getElementById('loginForm').style.display = 'block';
     document.getElementById('signupForm').style.display = 'none';
     document.getElementById('signUpButton').style.display = 'block';
