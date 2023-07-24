@@ -16,7 +16,7 @@ resource "aws_iam_role" "lambda_role" {
 }
 EOF
 }
-##NEED TO GIVE LESS RESOURCE
+
 resource "aws_iam_policy" "lambda_policy" {
   name = "lambda-policy"
   policy = <<EOF
@@ -29,11 +29,16 @@ resource "aws_iam_policy" "lambda_policy" {
         "logs:CreateLogGroup",
         "logs:CreateLogStream",
         "logs:PutLogEvents",
-        "s3:GetObject",
         "dynamodb:PutItem",
         "ssm:GetParameter",
         "ssm:GetParameters",
-        "ssm:DescribeParameters"
+        "ssm:DescribeParameters",
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:PutObjectAcl",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionAcl",
+        "s3:PutObjectVersionTagging"
       ],
       "Resource": "*"
     }
